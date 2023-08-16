@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@800&display=swap');
+:root{
+    --primary-light: hsl(193, 38%, 86%);
+    --primary-neon: hsl(150, 100%, 66%);
+
+    --neutral-gray: hsl(217, 19%, 38%);
+    --neutral-dark-gray: hsl(217, 19%, 24%);
+    --neutral-blue-dark: hsl(218, 23%, 16%);
+}
+
+html{
+    width: 100vw;
+    height: 100vh;
+}
+body{
+    background-color: var(--neutral-blue-dark);
+    width: 100vw;
+    height: 100vh;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Manrope', sans-serif;
+    box-sizing: border-box;
+    font-weight: 800;
+}
+.card{
+    width: 70%;
+    background-color: var(--neutral-dark-gray);
+    padding: 40px 20px;
+    border-radius: 16px;
+    max-width: 560px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    position: relative;
+}
+
+.green{
+    color: var(--primary-neon);
+    letter-spacing: 10px;
+}
+
+.quote{
+    font-size: 28px;
+color: var(--primary-light);
+}
+
+.divider img{
+    width: 100%;
+}
+
+.dice{
+    position: absolute;
+    bottom: -32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    aspect-ratio: 1/1;
+    border-radius: 100%;
+    background-color: var(--primary-neon);
+    cursor: pointer;
+    transition: filter .3s ease-in-out;
+}
+.dice:hover{
+   filter: drop-shadow(0 0 0.75rem var(--primary-neon));
+}
+
+.spin{
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

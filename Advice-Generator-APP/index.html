@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Advice generator app</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+</head>
+
+<body>
+
+  <div class="card">
+    <span id="id" class="green"></span>
+    <span id="quote" class="quote"></span>
+    <div class="divider">
+      <img src="./images/pattern-divider-desktop.svg" alt="">
+    </div>
+    <div id="dice" class="dice">
+      <img src="./images/icon-dice.svg" alt="">
+    </div>
+  </div>
+</body>
+
+<script>
+  const button = document.getElementById("dice");
+  const id = document.getElementById("id");
+  const quoteEl = document.getElementById("quote");
+
+  const API_URL = "https://api.adviceslip.com/advice"
+  async function fetchQuote() {
+    const response = await fetch(API_URL)
+    const slip = (await response.json()).slip
+    return slip
+  }
+
+  async function doChanges() {
+    button.classList.add("spin")
+    const quote = await fetchQuote()
+    button.classList.remove("spin")
+    id.innerHTML = `ADVICE #${quote.id}`;
+    console.log(quote);
+    quoteEl.innerHTML = `“${quote.advice}”`;
+  }
+
+  button.addEventListener('click', doChanges)
+
+  doChanges()
+</script>
+
+</html>
